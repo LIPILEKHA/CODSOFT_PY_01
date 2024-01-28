@@ -1,0 +1,20 @@
+{% extends 'myapp/base_generic.html' %}
+{% load static %}
+{% block content %}
+  <h1><u>{{ task.title }}</u></h1>
+  <p id="des">{{ task.description }}</p>
+
+  <p class="{% if task.completed %}completed{% else %}not-completed{% endif %}">
+      {% if task.completed %}Completed{% else %}Not Completed{% endif %}
+  </p>
+<br>
+ <div id="div">
+   <a href="{% url 'task_edit' pk=task.pk %}" id="edit">Edit</a>
+   <a href="{% url 'task_delete' pk=task.pk %}" id="delete">Delete</a>
+   <a href="{% url 'task_list' %}" id="back">Back to list</a>
+ <div>
+{% endblock %}
+
+{% block extra_css %}
+ <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/detailstyles.css' %}">
+{% endblock %}

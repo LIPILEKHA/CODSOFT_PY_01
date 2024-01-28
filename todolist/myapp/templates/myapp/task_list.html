@@ -1,0 +1,20 @@
+{% extends 'myapp/base_generic.html' %}
+
+{% load static %}
+{% block content %}
+  <h1>To-Do List</h1>
+
+  <ul>
+    {% for task in tasks %}
+      <li>
+        <a href="{% url 'task_detail' pk=task.pk %}">{{ task.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  <a id="one"  href="{% url 'task_new' %}">Add a new task</a>
+{% endblock %}
+
+{% block extra_css %}
+ <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/styles.css' %}">
+{% endblock %}

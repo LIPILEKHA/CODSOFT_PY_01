@@ -1,0 +1,16 @@
+{% extends 'myapp/base_generic.html' %}
+{% load static %}
+{% block content %}
+  <h1>{% if task %}Edit Task{% else %}New Task{% endif %}</h1>
+  <form method="post" class="task-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button  type="submit" id="button">Save</button>
+  </form>
+  <br>
+  <a href="{% url 'task_list' %}">Cancel</a>
+{% endblock %}
+
+{% block extra_css %}
+ <link rel="stylesheet" type="text/css" href="{% static 'myapp/css/editstyles.css' %}">
+{% endblock %}
